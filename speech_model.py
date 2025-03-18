@@ -79,7 +79,7 @@ class ModelSpeech:
                                      self.speech_model.get_model_name())
 
         self.trained_model.compile(loss=self.speech_model.get_loss_function(), optimizer=optimizer)
-        print('[ASRT] Compiles Model Successfully.')
+        print('[INFO] Compiles Model Successfully.')
 
         yielddatas = self._data_generator(batch_size, data_loader)
 
@@ -91,7 +91,7 @@ class ModelSpeech:
         for epoch in range(iter_start, iter_end):  # 迭代轮数
             try:
                 epoch += 1
-                print('[ASRT Training] train epoch %d/%d .' % (epoch, iter_end))
+                print('[Training] train epoch %d/%d .' % (epoch, iter_end))
                 data_loader.shuffle()
                 self.trained_model.fit_generator(yielddatas, num_iterate, callbacks=call_back)
             except StopIteration:
@@ -107,7 +107,7 @@ class ModelSpeech:
 
                 self.save_model(save_filename + '_epoch' + str(epoch))
 
-        print('[ASRT Info] Model training complete. ')
+        print('[INFO] Model training complete. ')
 
     def load_model(self, filename):
         """
@@ -170,7 +170,7 @@ class ModelSpeech:
                     word_error_num += words_n  # 就直接加句子本来的总字数就好了
 
                 if i % show_per_step == 0 and show_ratio:
-                    print('[ASRT Info] Testing: ', i, '/', data_count)
+                    print('[INFO] Testing: ', i, '/', data_count)
 
                 txt = ''
                 if out_report:
@@ -183,17 +183,17 @@ class ModelSpeech:
                 i += 1
 
             # print('*[测试结果] 语音识别 ' + str_dataset + ' 集语音单字错误率：', word_error_num / words_num * 100, '%')
-            print('*[ASRT Test Result] Speech Recognition ' + data_loader.dataset_type + ' set word error ratio: ',
+            print('*[Test Result] Speech Recognition ' + data_loader.dataset_type + ' set word error ratio: ',
                   word_error_num / words_num * 100, '%')
             if out_report:
-                txt = '*[ASRT Test Result] Speech Recognition ' + data_loader.dataset_type + ' set word error ratio: ' + str(
+                txt = '*[Test Result] Speech Recognition ' + data_loader.dataset_type + ' set word error ratio: ' + str(
                     word_error_num / words_num * 100) + ' %'
                 txt_obj.write(txt)
                 txt_obj.truncate()  # 去除文件末尾剩余未使用的空白存储字节
                 txt_obj.close()
 
         except StopIteration:
-            print('[ASRT Error] Model testing raise a error. Please check data format.')
+            print('[Error] Model testing raise a error. Please check data format.')
 
     def predict(self, data_input):
         """

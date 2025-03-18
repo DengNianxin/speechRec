@@ -1,29 +1,32 @@
 {
-  "dict_filename": "dict.txt",
-  "dataset": {
-    "train": [
-      {
-        "name": "cy_dialect11_train",
-        "data_list": "dataset/data_cy_dialect11/list/train.wav.lst",
-        "data_path": "dataset",
-        "label_list": "dataset/data_cy_dialect11/list/train.syllabel.txt"
-      }
-    ],
-    "dev": [
-      {
-        "name": "cy_dialect11_dev",
-        "data_list": "dataset/data_cy_dialect11/list/cv.wav.lst",
-        "data_path": "dataset",
-        "label_list": "dataset/data_cy_dialect11/list/cv.syllabel.txt"
-      }
-    ],
-    "test": [
-      {
-        "name": "cy_dialect11_test",
-        "data_list": "dataset/data_cy_dialect11/list/test.wav.lst",
-        "data_path": "dataset",
-        "label_list": "dataset/data_cy_dialect11/list/test.syllabel.txt"
-      }
-    ]
-  }
+    "dict_filename": "syllabel_dict.txt",
+
+    "dataset":{
+        "train":[
+            {
+                "name": "cy_dialect_train",
+                "data_list": "dataset/data_cy_dialect11/list/train.wav.lst",
+                "data_path": "dataset",
+                "label_list": "dataset/data_cy_dialect11/list/train.syllabel.txt"
+            }
+        ],
+
+        "dev":[
+            {
+                "name": "cy_dialect_dev",
+                "data_list": "dataset/data_cy_dialect11/list/dev.wav.lst",
+                "data_path": "dataset",
+                "label_list": "dataset/data_cy_dialect11/list/dev.syllabel.txt"
+            }
+        ],
+
+        "test":[
+            {
+                "name": "cy_dialect_test",
+                "data_list": "dataset/data_cy_dialect11/list/test.wav.lst",
+                "data_path": "dataset",
+                "label_list": "dataset/data_cy_dialect11/list/test.syllabel.txt"
+            }
+        ]
+    }
 }

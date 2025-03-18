@@ -6,11 +6,11 @@ from speech_features import Spectrogram
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
-AUDIO_LENGTH = 1600
+AUDIO_LENGTH = 900
 AUDIO_FEATURE_LENGTH = 200
 CHANNELS = 1
-# 默认输出的拼音的表示大小是1428，即1427个拼音+1个空白块
-OUTPUT_SIZE = 1428
+OUTPUT_SIZE = 1025
+
 dcnn = DCNN(
     input_shape=(AUDIO_LENGTH, AUDIO_FEATURE_LENGTH, CHANNELS),
     output_size=OUTPUT_SIZE

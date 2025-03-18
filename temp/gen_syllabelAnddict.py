@@ -6,7 +6,8 @@ from pypinyin import pinyin, Style
 input_file = 'UTTRANSINFO.txt'
 # 输出文件路径
 output_file = 'data.syllabel.txt'
-
+# 输出字典文件路径
+output_dict_file = 'syllabel_dict.txt'
 
 # 定义一个函数，用于去除字母、数字、【】内的内容和标点符号，仅保留汉字
 def clean_text(text):
@@ -17,7 +18,6 @@ def clean_text(text):
     # 去除标点符号
     text = re.sub(r'[^\u4e00-\u9fa5]', '', text)
     return text
-
 
 # 定义一个函数，将汉字转换为拼音
 def text_to_pinyin(text):
@@ -46,12 +46,15 @@ def text_to_pinyin(text):
     pinyin_str = ' '.join(processed_pinyin_list)
     return pinyin_str
 
-
-# 打开输入文件和输出文件
+# 打开输入文件、输出文件和字典文件
 with open(input_file, 'r', encoding='utf-8') as infile, \
-        open(output_file, 'w', encoding='utf-8') as outfile:
+        open(output_file, 'w', encoding='utf-8') as outfile, \
+        open(output_dict_file, 'w', encoding='utf-8') as dictfile:
     # 跳过第一行（标题行）
     next(infile)
+
+    # 创建一个字典来存储拼音和对应的汉字
+    syllable_dict = {}
 
     # 遍历每一行
     for line in infile:
@@ -70,7 +73,20 @@ with open(input_file, 'r', encoding='utf-8') as infile, \
         # 将汉字转换为拼音
         pinyin_text = text_to_pinyin(cleaned_text)
 
-        # 写入输出文件
+        # 写入拼音文件
         outfile.write(f"{uttrans_id} {pinyin_text}\n")
 
-print(f"生成的文件已保存到 {output_file}")
+        # 更新拼音字典
+        pinyin_list = pinyin_text.split()
+        for char, syllable in zip(cleaned_text, pinyin_list):
+            if syllable not in syllable_dict:
+                syllable_dict[syllable] = set()
+            syllable_dict[syllable].add(char)
+
+    # 将拼音字典写入文件
+    for syllable in sorted(syllable_dict):
+        characters = ''.join(sorted(syllable_dict[syllable]))  # 汉字用制表符分隔
+        dictfile.write(f"{syllable}\t{characters}\n")
+
+print(f"生成的拼音文件已保存到 {output_file}")
+print(f"生成的拼音字典已保存到 {output_dict_file}")
