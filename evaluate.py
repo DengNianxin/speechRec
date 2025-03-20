@@ -6,10 +6,10 @@ from speech_features import Spectrogram
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
-AUDIO_LENGTH = 900
+AUDIO_LENGTH = 4000
 AUDIO_FEATURE_LENGTH = 200
 CHANNELS = 1
-OUTPUT_SIZE = 1025
+OUTPUT_SIZE = 1174
 
 dcnn = DCNN(
     input_shape=(AUDIO_LENGTH, AUDIO_FEATURE_LENGTH, CHANNELS),

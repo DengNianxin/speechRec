@@ -35,8 +35,8 @@ def get_max_duration(wav_files):
     return max_duration
 
 # 获取文件夹中的所有 WAV 文件
-# 7.88 7.03 6.01 5.80 8.66 5.32 6.95 6.67 7.45 5.59
-wav_folder = "D:\\PycharmProjects\\asrt1\\dataset\\data_cy_dialect11\\data"
+# 7.88 7.03 6.01 5.80 8.66 5.32 6.95 6.67 7.45 5.59 39.47 27.48
+wav_folder = "C:\\Users\\dnx\\Desktop\\dataset\\sc_dataset2\\dev"
 wav_files = [os.path.join(wav_folder, f) for f in os.listdir(wav_folder) if f.endswith('.wav')]
 
 # 计算最大时长

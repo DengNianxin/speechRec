@@ -8,6 +8,12 @@
                 "data_list": "dataset/data_cy_dialect11/list/train.wav.lst",
                 "data_path": "dataset",
                 "label_list": "dataset/data_cy_dialect11/list/train.syllabel.txt"
+            },
+            {
+                "name": "sc_dataset2_train",
+                "data_list": "dataset/sc_dataset2/list/train.wav.lst",
+                "data_path": "dataset",
+                "label_list": "dataset/sc_dataset2/list/train.syllabel.txt"
             }
         ],
 
@@ -17,15 +23,12 @@
                 "data_list": "dataset/data_cy_dialect11/list/dev.wav.lst",
                 "data_path": "dataset",
                 "label_list": "dataset/data_cy_dialect11/list/dev.syllabel.txt"
-            }
-        ],
-
-        "test":[
+            },
             {
-                "name": "cy_dialect_test",
-                "data_list": "dataset/data_cy_dialect11/list/test.wav.lst",
+                "name": "sc_dataset2_dev",
+                "data_list": "dataset/sc_dataset2/list/dev.wav.lst",
                 "data_path": "dataset",
-                "label_list": "dataset/data_cy_dialect11/list/test.syllabel.txt"
+                "label_list": "dataset/sc_dataset2/list/dev.syllabel.txt"
             }
         ]
     }
