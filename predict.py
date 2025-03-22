@@ -3,11 +3,11 @@ import os
 from speech_model import ModelSpeech
 from models.DCNN import DCNN
 from speech_features import Spectrogram
-from N_gram import ModelLanguage
+# from N_gram import ModelLanguage
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
-AUDIO_LENGTH = 4000
+AUDIO_LENGTH = 900
 AUDIO_FEATURE_LENGTH = 200
 CHANNELS = 1
 OUTPUT_SIZE = 1174
