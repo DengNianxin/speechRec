@@ -52,16 +52,26 @@ def remove_files_and_lines(file_names, folder_path, lst_file_paths):
 # 主程序
 if __name__ == "__main__":
     # 定义文件路径
-    dev_txt = "long_wav_files_dev.txt"
-    train_txt = "long_wav_files_train.txt"
+    over_64_ids_dev = "over_64_ids_dev.txt"
+    over_64_ids_train = "over_64_ids_train.txt"
+    long_wav_files_dev = "long_wav_files_dev.txt"
+    long_wav_files_train = "long_wav_files_train.txt"
+
     dev_folder = "../dataset/sc_dataset2/dev"
     train_folder = "../dataset/sc_dataset2/train"
     dev_lst_files = ["../dataset/sc_dataset2/list/dev.wav.lst", "../dataset/sc_dataset2/list/dev.syllabel.txt"]
     train_lst_files = ["../dataset/sc_dataset2/list/train.wav.lst", "../dataset/sc_dataset2/list/train.syllabel.txt"]
 
     # 读取需要删除的文件名
-    dev_file_names = read_file_names(dev_txt)
-    train_file_names = read_file_names(train_txt)
+    print("读取开发集文件...")
+    over_64_dev_file_names = read_file_names(over_64_ids_dev)
+    long_wav_dev_file_names = read_file_names(long_wav_files_dev)
+    dev_file_names = over_64_dev_file_names.union(long_wav_dev_file_names)
+
+    print("读取训练集文件...")
+    over_64_train_file_names = read_file_names(over_64_ids_train)
+    long_wav_train_file_names = read_file_names(long_wav_files_train)
+    train_file_names = over_64_train_file_names.union(long_wav_train_file_names)
 
     # 删除文件和对应的行
     print("处理开发集...")

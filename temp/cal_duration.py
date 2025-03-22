@@ -46,7 +46,7 @@ def count_wav_files(folder_path, threshold=9):
 
 # 主程序
 if __name__ == "__main__":
-    folder_path = "D:\\PycharmProjects\\asrt1\\dataset\\sc_dataset2\\dev"
+    folder_path = "D:\\PycharmProjects\\asrt1\\dataset\\sc_dataset2\\train"
     if not os.path.isdir(folder_path):
         print("指定的路径不是一个有效的文件夹！")
     else:
@@ -56,7 +56,7 @@ if __name__ == "__main__":
         print(f"占比：{long_wav_percentage:.2f}%")
 
         # 将时长超过16秒的文件名保存到当前工作目录的文本文件中
-        output_file_path = os.path.join(os.getcwd(), "long_wav_files_dev.txt")  # 使用当前工作目录
+        output_file_path = os.path.join(os.getcwd(), "long_wav_files_train.txt")  # 使用当前工作目录
         with open(output_file_path, "w", encoding="utf-8") as output_file:
             for file_name in long_wav_file_names:
                 output_file.write(file_name + "\n")
