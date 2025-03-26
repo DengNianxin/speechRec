@@ -1,4 +1,0 @@
-save_models1    epoch50 batch_size16    63%
-save_models2    epoch50 bacth_size8     58.64%
-save_models3    epoch50 bacth_size4     56.66%
-save_models4    epoch50 batch_size2     56.58%

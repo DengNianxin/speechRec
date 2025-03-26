@@ -1,5 +1,4 @@
 import re
-import os
 
 def process_file(input_file, output_file):
     with open(input_file, 'r', encoding='utf-8') as infile, open(output_file, 'w', encoding='utf-8') as outfile:
@@ -12,13 +11,13 @@ def process_file(input_file, output_file):
                 match = re.search(r'SCC\d+', file_path)
                 if match:
                     id = match.group(0)  # 提取编号
-                    new_path = f"sc_dataset2/train/{id}.wav"  # 构造新的路径
-                    # new_path = f"sc_dataset2/dev/{id}.wav"  # 构造新的路径
+                    # new_path = f"sc_dataset2/train/{id}.wav"  # 构造新的路径
+                    new_path = f"sc_dataset2/dev/{id}.wav"  # 构造新的路径
                     outfile.write(f"{id} {new_path}\n")  # 写入新格式的行
 
 # 示例文件路径
-input_file = "list_train_processed.txt"
-output_file = "train.wav.lst"
+input_file = "list_dev_processed.txt"
+output_file = "dev.wav.lst"
 
 # 调用函数处理文件
 process_file(input_file, output_file)

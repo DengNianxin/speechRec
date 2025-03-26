@@ -1,7 +1,7 @@
 import re
 
 # 输入文件路径列表
-input_files = ['train.syllabel.txt', 'dev.syllabel.txt', 'train.syllabel2.txt', 'dev.syllabel2.txt']
+input_files = ['train.syllabel.txt', 'dev.syllabel.txt']
 # 输出字典文件路径
 output_dict_file = 'syllabel_dict.txt'
 

@@ -1,5 +1,4 @@
 import os
-import os
 import wave
 
 
@@ -14,7 +13,7 @@ def get_max_duration(wav_files):
         float: 最大时长（单位：秒）。
     """
     max_duration = 0
-
+    min_duration = 99
     for file in wav_files:
         if not os.path.exists(file):
             print(f"Warning: File {file} does not exist. Skipping...")
@@ -29,14 +28,17 @@ def get_max_duration(wav_files):
                 duration = num_samples / sample_rate
                 # 更新最大时长
                 max_duration = max(max_duration, duration)
+                min_duration = min(min_duration, duration)
         except Exception as e:
             print(f"Error processing file {file}: {e}")
-
+    print(min_duration)
     return max_duration
+
 
 # 获取文件夹中的所有 WAV 文件
 # 7.88 7.03 6.01 5.80 8.66 5.32 6.95 6.67 7.45 5.59 39.47 27.48
-wav_folder = "C:\\Users\\dnx\\Desktop\\dataset\\sc_dataset2\\dev"
+# 1.82 0.75 0.85
+wav_folder = "../dataset/sc_dataset2/dev"
 wav_files = [os.path.join(wav_folder, f) for f in os.listdir(wav_folder) if f.endswith('.wav')]
 
 # 计算最大时长
