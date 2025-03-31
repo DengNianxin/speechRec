@@ -73,7 +73,7 @@ class DCNN(BaseModel):
         output_shape: tuple，默认值(200, 1428)
     """
 
-    def __init__(self, input_shape: tuple = (1600, 200, 1), output_size: int = 1428) -> None:
+    def __init__(self, input_shape: tuple = (900, 200, 1), output_size: int = 1087) -> None:
         super().__init__()
         self.input_shape = input_shape
         self._pool_size = 8
