@@ -590,7 +590,7 @@ pao2	刨咆袍
 pao3	跑
 pao4	泡炮疱
 pee2	拍
-pei1    胚
+pei1	胚
 pei2	培裴赔陪
 pei4	佩沛配
 pen1	喷
