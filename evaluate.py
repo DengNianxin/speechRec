@@ -19,6 +19,6 @@ feat = Spectrogram()
 evalue_data = DataLoader('dev')
 ms = ModelSpeech(dcnn, feat, max_label_length=64)
 
-ms.load_model('save_models/save_models1/' + dcnn.get_model_name() + '.model.h5')
+ms.load_model('save_models/save_models3/' + dcnn.get_model_name() + '.model.h5')
 ms.evaluate_model(data_loader=evalue_data, data_count=-1,
                   out_report=True, show_ratio=True, show_per_step=100)

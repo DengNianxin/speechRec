@@ -10,7 +10,7 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 AUDIO_LENGTH = 900
 AUDIO_FEATURE_LENGTH = 200
 CHANNELS = 1
-OUTPUT_SIZE = 1025
+OUTPUT_SIZE = 1087
 
 dcnn = DCNN(
     input_shape=(AUDIO_LENGTH, AUDIO_FEATURE_LENGTH, CHANNELS),
@@ -19,8 +19,8 @@ dcnn = DCNN(
 feat = Spectrogram()
 ms = ModelSpeech(dcnn, feat, max_label_length=64)
 
-ms.load_model('save_models/save_models1/' + dcnn.get_model_name() + '.model.h5')
-res = ms.recognize_speech_from_file('predict_file/G0003_0001.wav')
+ms.load_model('save_models/save_models3/' + dcnn.get_model_name() + '.model.h5')
+res = ms.recognize_speech_from_file('predict_file/G0001_0019.wav')
 print('*[提示] 声学模型语音识别结果：\n', res)
 
 ml = ModelLanguage('')
