@@ -7,10 +7,10 @@ from N_gram import ModelLanguage
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
-AUDIO_LENGTH = 900
+AUDIO_LENGTH = 1600
 AUDIO_FEATURE_LENGTH = 200
 CHANNELS = 1
-OUTPUT_SIZE = 1087
+OUTPUT_SIZE = 1024
 
 dcnn = DCNN(
     input_shape=(AUDIO_LENGTH, AUDIO_FEATURE_LENGTH, CHANNELS),
@@ -19,8 +19,8 @@ dcnn = DCNN(
 feat = Spectrogram()
 ms = ModelSpeech(dcnn, feat, max_label_length=64)
 
-ms.load_model('save_models/save_models3/' + dcnn.get_model_name() + '.model.h5')
-res = ms.recognize_speech_from_file('predict_file/G0001_0019.wav')
+ms.load_model('save_models/asrt_models/SpeechModel251bn.model.h5')
+res = ms.recognize_speech_from_file('predict_file/SP1_0102.wav')
 print('*[提示] 声学模型语音识别结果：\n', res)
 
 ml = ModelLanguage('')

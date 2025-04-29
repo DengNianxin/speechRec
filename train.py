@@ -11,7 +11,7 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 AUDIO_LENGTH = 1600
 AUDIO_FEATURE_LENGTH = 200
 CHANNELS = 1
-OUTPUT_SIZE = 998
+OUTPUT_SIZE = 1025
 
 dcnn = DCNN(
     input_shape=(AUDIO_LENGTH, AUDIO_FEATURE_LENGTH, CHANNELS),
@@ -23,5 +23,5 @@ opt = Adam(learning_rate=0.0001, beta_1=0.9, beta_2=0.999, decay=0.0, epsilon=10
 ms = ModelSpeech(dcnn, feat, max_label_length=64)
 
 ms.train_model(optimizer=opt, data_loader=train_data,
-               epochs=1, save_step=1, batch_size=4 , last_epoch=0)
+               epochs=50, save_step=1, batch_size=4 , last_epoch=0)
 ms.save_model('save_models/' + dcnn.get_model_name())

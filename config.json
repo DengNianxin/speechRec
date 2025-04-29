@@ -4,19 +4,19 @@
     "dataset":{
         "train":[
             {
-                "name": "my_dataset_train",
-                "data_list": "dataset/my_dataset/list/train.wav.lst",
+                "name": "data_cy_dialect11_train",
+                "data_list": "dataset/data_cy_dialect11/list/train.wav.lst",
                 "data_path": "dataset",
-                "label_list": "dataset/my_dataset/list/train.syllabel.txt"
+                "label_list": "dataset/data_cy_dialect11/list/train.syllabel.txt"
             }
         ],
 
         "dev":[
             {
-                "name": "my_dataset_dev",
-                "data_list": "dataset/my_dataset/list/dev.wav.lst",
+                "name": "data_cy_dialect11_dev",
+                "data_list": "dataset/data_cy_dialect11/list/dev.wav.lst",
                 "data_path": "dataset",
-                "label_list": "dataset/my_dataset/list/dev.syllabel.txt"
+                "label_list": "dataset/data_cy_dialect11/list/dev.syllabel.txt"
             }
         ]
     }

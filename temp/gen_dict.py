@@ -4,10 +4,9 @@ from pypinyin import pinyin, Style
 
 # 输入文件路径
 uttrans_info_file = 'data_cy_dialect11/UTTRANSINFO.txt'
-train_file = 'data_cy_dialect12/train.txt'
-dev_file = 'data_cy_dialect12/dev.txt'
+
 # 输出字典文件路径
-output_dict_file = 'syllabel_dict.txt'
+output_dict_file = 'data_cy_dialect11/syllabel_dict.txt'
 
 # 定义一个函数，用于去除字母、数字、【】内的内容和标点符号，仅保留汉字
 def clean_text(text):
@@ -77,31 +76,31 @@ with open(uttrans_info_file, 'r', encoding='utf-8') as infile:
                 syllable_dict[syllable] = set()
             syllable_dict[syllable].add(char)
 
-# 处理 train.txt 和 dev.txt 文件
-for file_path in [train_file, dev_file]:
-    with open(file_path, 'r', encoding='utf-8') as infile:
-        # 遍历每一行
-        for line in infile:
-            # 去除行首行尾的空白字符并按制表符分割
-            columns = line.strip().split('\t')
-            if len(columns) < 2:
-                continue  # 跳过格式不正确的行
-
-            # 获取最后一列（文本内容）
-            transcription = columns[1]
-
-            # 清洗文本，仅保留汉字
-            cleaned_text = clean_text(transcription)
-
-            # 将汉字转换为拼音
-            pinyin_text = text_to_pinyin(cleaned_text)
-
-            # 更新拼音字典
-            pinyin_list = pinyin_text.split()
-            for char, syllable in zip(cleaned_text, pinyin_list):
-                if syllable not in syllable_dict:
-                    syllable_dict[syllable] = set()
-                syllable_dict[syllable].add(char)
+# # 处理 train.txt 和 dev.txt 文件
+# for file_path in [train_file, dev_file]:
+#     with open(file_path, 'r', encoding='utf-8') as infile:
+#         # 遍历每一行
+#         for line in infile:
+#             # 去除行首行尾的空白字符并按制表符分割
+#             columns = line.strip().split('\t')
+#             if len(columns) < 2:
+#                 continue  # 跳过格式不正确的行
+#
+#             # 获取最后一列（文本内容）
+#             transcription = columns[1]
+#
+#             # 清洗文本，仅保留汉字
+#             cleaned_text = clean_text(transcription)
+#
+#             # 将汉字转换为拼音
+#             pinyin_text = text_to_pinyin(cleaned_text)
+#
+#             # 更新拼音字典
+#             pinyin_list = pinyin_text.split()
+#             for char, syllable in zip(cleaned_text, pinyin_list):
+#                 if syllable not in syllable_dict:
+#                     syllable_dict[syllable] = set()
+#                 syllable_dict[syllable].add(char)
 
 # 将拼音字典写入文件
 with open(output_dict_file, 'w', encoding='utf-8') as dictfile:
